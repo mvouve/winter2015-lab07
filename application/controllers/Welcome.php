@@ -49,17 +49,22 @@ class Welcome extends Application {
     function order($filename)
     {
         $this->load->model('orders');
+        $this->load->model('burgers');
+        $this->load->model('menu');
 	// Build a receipt for the chosen order
 	$order = $this->orders->get($filename);
-        $burgers = $order->get_burgers();
+        $this->data['customer'] = $order->get_customer_name(); 
+        $burgers = $this->orders->get_burgers();
         $this->data['burgers'] = array();
         
-        $i = 0;
+        $num = 1;
         foreach($burgers as $burger)
         {
-            $burger_->num = $i++;
+            $burger_ = new stdClass();
+            
             $burger_->patty = $burger->get_patty();
-            $burger_->cheeses = $burger_->get_cheeses();
+            $burger_->id = $num++;
+            $burger_->cheeses = $burger->get_cheeses();
             $burger_->toppings = array();
             
             foreach($burger->get_toppings() as $t)
@@ -67,14 +72,13 @@ class Welcome extends Application {
                 $burger_->toppings[] = $t;
             }
             
-            $burger_['sauces'] = array();
+            $burger_->sauces = array();
             
             foreach($burger->get_sauces() as $t)
             {
                 $burger_->sauces[] = $t;
             }
-            setlocale(LC_MONETARY, 'en_CA');
-            $burger_['price'] = money_format('#n', $burger->get_total());
+            $burger_->price = '$' . number_format($burger->get_total(), 2);
             
             $this->data['burgers'][] = $burger_;
         }

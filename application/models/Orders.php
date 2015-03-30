@@ -70,5 +70,25 @@ class Orders extends CI_Model{
         return (string)$this->xml->customer[0];
     }
     
+    public function get_burgers()
+    {
+        $burgers = array();
+        
+        foreach($this->xml->burger as $xml_burger);
+            $burgers[] = $this->burgers->get($xml_burger);
             
+        return $burgers;
+    }
+    
+    public function get_total()
+    {
+        $total = 0;
+        $burgers = $this->get_burgers();
+        foreach($burgers as $burger)
+        {
+            $total += $burger->get_total();
+        }
+        
+        return $total;
+    }
 }
