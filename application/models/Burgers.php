@@ -95,9 +95,12 @@ class Burgers extends CI_Model{
                 $menu_item = $this->menu->getPatty($code);
                 $total += $menu_item->price;
             }
-            if($child->getName() === 'cheese')
+            if($child->getName() === 'cheeses')
             {
-                $code = (string) $child['type'];
+                if((string) $child['top'] != null)
+                    $code = (string) $child['top'];
+                else
+                    $code = (string) $child['bottom'];
                 $menu_item = $this->menu->getCheese($code);
                 $total += $menu_item->price;
             }
