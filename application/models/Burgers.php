@@ -32,7 +32,7 @@ class Burgers extends CI_Model{
     
     public function get_cheeses()
     {
-        $cheeses = array(null, null);
+        $cheeses = array('', '');
         
         $cheese_index = 0;
         
@@ -80,7 +80,15 @@ class Burgers extends CI_Model{
         return $sauces;
     }
     
-        public function get_total()
+    public function get_special()
+    {
+        if(isset($this->xml->special))
+            return (string)$this->xml->special;
+        else
+            return '';
+    }
+    
+    public function get_total()
     {
         $total = 0;
         foreach($this->xml->children() as $child)

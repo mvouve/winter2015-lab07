@@ -4,15 +4,20 @@
             <th>Customer</th>
             <td>{customer}</td>
         </tr>
+        <tr>
+            <th>Type</th>
+            <td>{type}</td>
+        </tr>
+        <tr>
+            <th>Special Instructions:</th>
+            <td>{special}</td>
+        </tr>
         {burgers}
-        <tr>
-            <th>Burger ID</th>
-            <td>{id}</td>
-        </tr>
-        <tr>
-            <th>Price:</th>
-            <td>{price}</td>
-        </tr>
+            {burger}
         {/burgers}
-        
+        <tr>
+            <th>Order Total:</th>
+            <th>{ordertotal}</th>
+        </tr>
+    </table>
 </div>

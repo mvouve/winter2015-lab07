@@ -70,6 +70,11 @@ class Orders extends CI_Model{
         return (string)$this->xml->customer[0];
     }
     
+    public function get_order_type()
+    {
+        return (string) $this->xml['type'];
+    }
+    
     public function get_burgers()
     {
         $burgers = array();
@@ -78,6 +83,14 @@ class Orders extends CI_Model{
             $burgers[] = $this->burgers->get($xml_burger);
             
         return $burgers;
+    }
+    
+    public function get_special()
+    {
+        if(isset($this->xml->special))
+            return (string)$this->xml->special;
+        else
+            return '';
     }
     
     public function get_total()
