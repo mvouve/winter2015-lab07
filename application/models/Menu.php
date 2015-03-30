@@ -91,5 +91,13 @@ class Menu extends CI_Model {
         else
             return null;
     }
+    
+    function getCheese($code)
+    {
+        if (isset($this->cheeses[$code]))
+            return $this->cheeses[$code];
+        else
+            return null;
+    }
 
 }

@@ -32,25 +32,21 @@ class Burgers extends CI_Model{
     
     public function get_cheeses()
     {
-        $cheeses = array('', '');
         
-        $cheese_index = 0;
-        
-        foreach($this->xml->children() as $child)
+        if (isset($this->xml->cheeses['top']))
         {
-            if($child->getName() === 'cheese')
-            {
-                $cheese_code = (string) $child['type'];
-                $cheese = $this->menu->get_cheese($cheese_code);
-                $cheeses[$cheese_index] = $cheese->name;
-            }
-            if($child->getName() === 'patty')
-            {
-                $cheese_index = 1;
-            }
+            $cheese['top'] = $this->xml->cheeses['top'];
         }
+        else
+            $cheese['top'] = '';
+        if (isset($this->xml->cheeses['bottom']))
+        {
+            $cheese['bottom'] = $this->xml->cheeses['bottom'];
+        }
+        else
+            $cheese['bottom'] = '';
         
-        return $cheeses;
+        return $cheese;
     }
     
     public function get_toppings()

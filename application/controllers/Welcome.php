@@ -70,8 +70,8 @@ class Welcome extends Application {
             $burger_['patty'] = $burger->get_patty();
             $burger_['id'] = $num++;
             $cheese = $burger->get_cheeses();
-            $burger_['top_cheese'] = $cheese[0];
-            $burger_['bottom_cheese'] = $cheese[1];
+            $burger_['top_cheese'] = $cheese['top'];
+            $burger_['bottom_cheese'] = $cheese['bottom'];
             
             $burger_['toppings'] = array();
             

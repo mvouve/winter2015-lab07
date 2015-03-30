@@ -10,22 +10,22 @@
     <th>Patty:</th>
     <td>{patty}</td>
 <tr>
-    <th>Cheeses Top</th>
+    <th>Cheeses Top:</th>
     <td>{top_cheese}</td>
 </tr>
 <tr>
-    <th>Cheeses Bottom</th>
+    <th>Cheeses Bottom:</th>
     <td>{bottom_cheese}</td>
 </tr>
 {sauces}
 <tr>
-    <th>Sauces</th>
+    <th>Sauce:</th>
     <td>{name}</td>
 </tr>
 {/sauces}
 {toppings}
 <tr>
-    <th>Toppings</th>
+    <th>Topping:</th>
     <td>{name}</td>
 </tr>
 {/toppings}
